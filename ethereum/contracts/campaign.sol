@@ -1,7 +1,7 @@
 pragma solidity ^0.4.17;
 
 contract CampaignFactory {
-    address[] deployedCampaigns;
+    address[] public deployedCampaigns;
 
     function createCampaign(uint minimum) public {
         address newCampaign = new Campaign(minimum, msg.sender);
@@ -58,12 +58,12 @@ contract Campaign {
         requests.push(newRequest);
     }
 
-    function approveRequests(uint index) public {
+    function approveRequest(uint index) public {
         Request storage request = requests[index];
 
         require(approvers[msg.sender]);
         require(!request.approvals[msg.sender]);
-
+        
         request.approvals[msg.sender] = true;
         request.approvalCount++;
     }
