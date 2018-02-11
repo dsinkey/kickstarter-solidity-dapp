@@ -43,7 +43,13 @@ class RequestIndex extends Component {
                 <h3>Requests</h3>
                 <Link route={`/campaigns/${this.props.address}/requests/new`}>
                     <a>
-                        <Button primary>Add Request</Button>
+                        <Button
+                            primary
+                            floated="right"
+                            style={{ marginBottom: '10px' }}
+                        >
+                            Add Request
+                        </Button>
                     </a>
                 </Link>
                 <Table>
@@ -60,6 +66,7 @@ class RequestIndex extends Component {
                     </Header>
                     <Body>{this.renderRow()}</Body>
                 </Table>
+                <div>Number of Requests: {this.props.requestCount}</div>
             </Layout>
         );
     }
